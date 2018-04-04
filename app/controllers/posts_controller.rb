@@ -11,11 +11,17 @@ class PostsController < ApplicationController
 		@post = Post.new
 	end
 
-  <br>
-<label>Description:</label>
-<br>
-<input type="text" value="malicious description" name="post[description]" id="post_description">
-
+  def create
+    @post = Post.new(params.require(:post).permit(:title, :description))
+    @post.save
+    redirect_to post_path(@post)
+  end
+   
+  def update
+    @post = Post.find(params[:id])
+    @post.update(params.require(:post).permit(:title))
+    redirect_to post_path(@post)
+  end
 	def edit
 	  @post = Post.find(params[:id])
 	end
