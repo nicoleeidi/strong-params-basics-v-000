@@ -11,17 +11,10 @@ class PostsController < ApplicationController
 		@post = Post.new
 	end
 
-	def create
-	  @post = Post.new(params["post"])
-	  @post.save
-	  redirect_to post_path(@post)
-	end
-
-	def update
-	  @post = Post.find(params[:id])
-	  @post.update(params["post"])
-	  redirect_to post_path(@post)
-	end
+  <br>
+<label>Description:</label>
+<br>
+<input type="text" value="malicious description" name="post[description]" id="post_description">
 
 	def edit
 	  @post = Post.find(params[:id])
